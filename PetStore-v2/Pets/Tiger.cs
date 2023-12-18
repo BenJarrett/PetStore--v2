@@ -36,6 +36,15 @@ namespace PetStore_v2.Pets
 
         int _numberOfBites;
 
+
+        // Every tiger starts off with one bite //
+        public Tiger()
+
+        {
+            _numberOfBites = 1;
+        }
+
+
         public void Bite(string handlerName)
         {
             _numberOfBites++;

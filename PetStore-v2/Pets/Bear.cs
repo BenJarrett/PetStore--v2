@@ -20,6 +20,7 @@ namespace PetStore_v2.Pets
         // This is now the bare minumum needed to create this class //
         // Now you cannot create a Bear class without giving it these properties //
         // Can also have logic involved //
+        // Mostly Used for establishing defaults and minumum requirements for a copy //
         public Bear(string name, string type)
         {
             Name = name;
@@ -36,6 +37,23 @@ namespace PetStore_v2.Pets
                 EducationLevel = "Above Average";
             }
         }
+
+
+        // *** CONSTRUCTOR OVERLOADING *** //
+        // If you wanted to be able to have multiple ways to build a class, you can do that //
+        // If I wanted a constructor take in Name and Type, but in additon wanted it to take in Name Type and Education Level. I can create a second constructor //
+        // Ususally you'll find that if they're the same, you'll want to keep them in the same place/order. //
+        // Now I have two constructors, one that takes in name, type, and educationLevel, and one that takes in name and type. // 
+        // See Program.cs file for bear2 example of this being used //
+        // Can work completely different or collboritvely //
+        // *** CONSTRUCTOR OVERLOADING *** //
+
+        public Bear(string name, string type, string educationLevel)
+        {
+
+        }
+
+
 
         // **Encapsulation** // - Taking your job and hiding it from other people so they don't have to worry about how it works- There are rules behind this behavior, but no one else but the Bear has to worry about what those rules are // **
         // This is saying whoever calls this is going to tell this method how many fish the bear has eaten. 

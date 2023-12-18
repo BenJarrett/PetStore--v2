@@ -73,6 +73,12 @@ namespace PetStore_v2
             // We want people to knoiw how many fish this bear has eaten, but don't want to allow them to manipulate however they want. In this case they can only add to how many fish the bear has eaten. //
             // The they in this case, is you in the future. //
 
+            // 2nd constructor example //
+            // bc we have two contructors on the bear clss, it will ask us which one we want to use //
+            // Can 
+            var bear2 = new Bear();
+            // 2nd constructor example //
+
         }
     }
 }
