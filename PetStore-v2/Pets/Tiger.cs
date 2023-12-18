@@ -48,11 +48,13 @@ namespace PetStore_v2.Pets
         public void Bite(string handlerName)
         {
             _numberOfBites++;
-            if (_numberOfBites > 5)
+            if (_numberOfBites is 5 or 10 or 15)
             {
-                Console.WriteLine("This is a bitey Tiger");
+                var incremenfOfFive = $"{Name} the tiger just bit {handlerName} again! That's the {_numberOfBites} time!";
+                Console.WriteLine($"This is a bitey Tiger {incremenfOfFive}");
             }
-            Console.WriteLine($"{Name} the tiger just bit {handlerName}! That's the {_numberOfBites} time.");
+
+            Console.WriteLine("This is a bitey Tiger");
         }
     }
 }

@@ -11,9 +11,18 @@ namespace PetStore_v2.Pets
         public string Name { get; set; }
         public string Type { get; set; }
         public int NumberOfFishEaten { get; private set; } // Can't make the number of fish eaten on a Bear class increas or decrease, there are rules on how we change the number of fish a bear has eaten. Can Get, or read this property as much as you want, but only I can make a change to it // No one else means me in the future I guess. So like if I, later, am the Program.cs class, I can't change that value from there. Can only get it.
-        public string EducationLevel { get; set; } /* = "GED";*/ // Default Value // - For every Bear that gets created // Can set it in the properties like this, or setting it in the constructor like I did //
-        public Tiger BestTigerFriend { get; set; }
-        public bool LovesHoney { get; } // Read Only Property - If we want this value to never change, remove the set // - Can only be set in the constructor, as many times as we want, but only in the constructor below. Once the Bear is created, it's only read only from that point forward. Cannot be changed. Still a public property is getable, but neither or some on the outside change it. //
+        public string EducationLevel { get; set; } /* = "GED";*/ // Default Value // - For every Bear that gets created // Can set it in the properties like this, or setting it in the constructor like I did // See Program.cs file for an example use case of this //
+        public Tiger BestTigerFriend { get; set; } // Property called BestTigerFriend, that will store an istance of the Tiger Class // 
+
+        // *** Two ways of setting this. Can use Expression Bodies Property like I did below  *** // 
+        // *** public bool LovesHoney { get; } *** OR like I did below // Read Only Property - If we want this value to never change, remove the set // - Can only be set in the constructor, as many times as we want, but only in the constructor below. Once the Bear is created, it's only read only from that point forward. Cannot be changed. Still a public property is getable, but neither or some on the outside change it. //
+        // If we know that the only bear that loves honey is Winnie the Pooh, we can say that if this LovesHoney should return True or not, if true the name property is Winnie the Pooh.  //
+        // This is now a function that returns a bool, that is set to our property of LovesHoney //
+        // This function doesn't actually return anything, but it sets a value //
+        // Still a get only property, but this function is the getter now // 
+        // Generally, there is a very limited use case for this //
+        public bool LovesHoney => Name == "Winnie the Pooh"; // -  *** Ecpression Bodies ReadOnly Property *** //
+        // *** Two ways of setting this. *** //
 
 
         // Constructor Template Shortcut // - CTOR then tab twice
@@ -25,14 +34,14 @@ namespace PetStore_v2.Pets
         {
             Name = name;
             Type = type;
-            EducationLevel = "GED"; // Setting the default value in the constructor //
+            EducationLevel = "GED"; // Setting the default value in the constructor
 
 
-            if (name == "Winnie the Pooh")
-            {
-                LovesHoney = true;
-            }
-            else if (name == "Yogi")
+            //if (name == "Winnie the Pooh")
+            //{
+            //    LovesHoney = true;
+            //}
+            if (name == "Yogi")
             {
                 EducationLevel = "Above Average";
             }
@@ -46,12 +55,33 @@ namespace PetStore_v2.Pets
         // Now I have two constructors, one that takes in name, type, and educationLevel, and one that takes in name and type. // 
         // See Program.cs file for bear2 example of this being used //
         // Can work completely different or collboritvely //
+        // In the Bear constructor below, we are first calling the constructor above, and then using ours to use them in collaboration. // 
+        // : colon says, I am about to do something prior to doing this contrsuctor //
+        // I would like to call the constructor that looks like this other one, into the constructor of this class // 
+        // Setting the class property value to the educationLevel param in the contrsuctor below //
         // *** CONSTRUCTOR OVERLOADING *** //
 
-        public Bear(string name, string type, string educationLevel)
+        public Bear(string name, string type, string educationLevel) : this(name, type)
         {
-
+            EducationLevel = educationLevel;
         }
+
+        // In this one, we want this Bear to have started out already having eaten fish, but I also want to take in how many fish this bear ate. // 
+        // First talks to the constructor with three params, then that will so no no, first talk to the one with two params, then the code is executed asynchonysly //
+        // We are saying that we want to set the numberOfFishEaten to be whatever amount the param howManyFish is //
+        // Basically we are extending or building on top of the other constructors //
+        // *** EXPRESSION BODIED MEMBERS *** //
+        // Another way of writing a simple, one liner with curly brackets like above. It's just a cleaner way to do it. // 
+        // Member - Any part of a class - Method, Property or Field //
+        // Expression - Very similar concept to Inline function - In JS, they are called fat arrow functions //
+        // Can take any of the one liners, and instead of them being a full member, I can turn them into an expression bodied member  //
+        // Functionally the same as the part that is commented out. //
+        // In this case it is an Expression Bodied Constructor, specifically //
+        public Bear(string name, string type, string educationLevel, int howManyFish) : this(name, type, educationLevel) => NumberOfFishEaten = howManyFish;
+        /*       {
+                   NumberOfFishEaten = howManyFish;
+               }*/
+        // *** EXPRESSION BODIED MEMBERS/CONSTRUCTORS *** //
 
 
 
@@ -72,5 +102,17 @@ namespace PetStore_v2.Pets
 
             NumberOfFishEaten += howMany;
         }
+
+        // Bear.cs property BestTigerFriend method Example //
+        // Deals with the data from this bear's class, and going to look at the instance of the tiger class we are passing in that is theBestTigerFriend  //
+        public void HangOutWithBestFriend()
+        {
+            var output = $"{Name} the bear is hanging out with" +
+                $" it's best tiger friend, {BestTigerFriend.Name}" +
+                $" the {BestTigerFriend.Size} sized tiger";
+
+            Console.WriteLine(output);
+        }
+        // Bear.cs property BestTigerFkriend method Example // 
     }
 }

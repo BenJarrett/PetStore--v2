@@ -70,14 +70,32 @@ namespace PetStore_v2
             bear.EatFish(5);
             bear.EatFish(5);
             bear.EatFish(-5); // In this case, this what we don't want to allow. // In this case, we want rules around how many fish this can eat, and if we exposed it publicly, we would lose the control to create and manipulate these rules. In this case, we don't want this property to be able to move backwards.  // - The fish vomited 5 fish right back up // 
-            // We want people to knoiw how many fish this bear has eaten, but don't want to allow them to manipulate however they want. In this case they can only add to how many fish the bear has eaten. //
-            // The they in this case, is you in the future. //
+                              // We want people to knoiw how many fish this bear has eaten, but don't want to allow them to manipulate however they want. In this case they can only add to how many fish the bear has eaten. //
+                              // The they in this case, is you in the future. //
 
-            // 2nd constructor example //
-            // bc we have two contructors on the bear clss, it will ask us which one we want to use //
-            // Can 
-            var bear2 = new Bear();
-            // 2nd constructor example //
+            /*      // 2nd constructor example //
+                  // bc we have two contructors on the bear clss, it will ask us which one we want to use //
+                  // Can 
+                  var bear2 = new Bear();
+                  // 2nd constructor example //*/
+
+            // BestTigerFriend property example // 
+            // The bear's best tiger friend is this tiger //
+            // taken an instance of the tiger class and set a property of the bear class equal to this tiger //
+            // So now the bear class has an instance of the tiget class associate with it //
+            /* bear.BestTigerFriend = tiger;*/
+            // BestTigerFriend property example // 
+
+            // Using it when a Tiger class that hasn't been obstantiaed yet //
+            // Passing an object reference to a property //
+            bear.BestTigerFriend = new Tiger { Name = "Bob", Size = "Minature" }; // object initializer //
+            // Using it when a Tiger class that hasn't been obstantiaed yet // 
+
+            // HangoutWithBestFriendMethod example //
+            bear.HangOutWithBestFriend();
+            // HangoutWithBestFriendMethod example //
+
+            Console.WriteLine(bear.BestTigerFriend.Name);
 
         }
     }
