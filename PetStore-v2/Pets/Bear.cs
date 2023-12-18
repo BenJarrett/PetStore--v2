@@ -59,7 +59,7 @@ namespace PetStore_v2.Pets
         // : colon says, I am about to do something prior to doing this contrsuctor //
         // I would like to call the constructor that looks like this other one, into the constructor of this class // 
         // Setting the class property value to the educationLevel param in the contrsuctor below //
-        // *** CONSTRUCTOR OVERLOADING *** //
+        // *** CONSTRUCTOR OVERLOADING *** // 
 
         public Bear(string name, string type, string educationLevel) : this(name, type)
         {
